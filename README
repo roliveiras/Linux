@@ -26,8 +26,8 @@ cópia mesclada em um diretório de trabalho separado sem tocar nas originais:
 ```bash
 # a partir da raiz do repositório
 rm -rf /tmp/linux-merge
-rsync -a --delete /home/runner/work/Linux/Linux/upstream/torvalds-linux/ /tmp/linux-merge/
-rsync -a /home/runner/work/Linux/Linux/vendors/microsoft-wsl2/ /tmp/linux-merge/
+rsync -a --delete ./upstream/torvalds-linux/ /tmp/linux-merge/
+rsync -a ./vendors/microsoft-wsl2/ /tmp/linux-merge/
 ```
 
 Isso cria `/tmp/linux-merge` contendo o código do upstream com as alterações
