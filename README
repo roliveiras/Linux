@@ -16,3 +16,21 @@ several of them using the Restructured Text markup notation.
 Please read the Documentation/process/changes.rst file, as it contains the
 requirements for building and running the kernel, and information about
 the problems which may result by upgrading your kernel.
+
+## Como fazer o merge entre as pastas `upstream` e `vendors`
+
+Este repositório guarda duas árvores completas: `upstream/torvalds-linux`
+(código base) e `vendors/microsoft-wsl2` (árvore modificada). Para gerar uma
+cópia mesclada em um diretório de trabalho separado sem tocar nas originais:
+
+```bash
+# a partir da raiz do repositório
+rm -rf /tmp/linux-merge
+rsync -a --delete ./upstream/torvalds-linux/ /tmp/linux-merge/
+rsync -a ./vendors/microsoft-wsl2/ /tmp/linux-merge/
+```
+
+Isso cria `/tmp/linux-merge` contendo o código do upstream com as alterações
+de vendors sobrepostas. Opcionalmente, dentro de `/tmp/linux-merge` você pode
+inicializar um repositório (`git init`) para inspecionar ou resolver conflitos
+manualmente antes de construir o kernel.
